@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HW</title>
     <link href="../styles.css" rel="stylesheet">
+    <link href="./font.ico" rel="icon">
 </head>
 <body>
     <?php
         if(isset($_POST['clrcookies'])) {
-            var_dump($_POST['clrcookies']);
-            unset($_POST['clrcookies']);
             unset($_COOKIE['visits']);
             setcookie('visits', null, -1);
             setcookie('lastvisit', null, -1);
@@ -21,7 +20,7 @@
         if(!isset($_COOKIE['visits'])) {
             setcookie('visits', 1, time() + 3600);
         } else {
-            setcookie('visits', ++$_COOKIE['visits'], time() + 3600);
+            setcookie('visits', $_COOKIE['visits'] + 1, time() + 3600);
         }
         setcookie('lastvisit', time(), time() + 3600);
         if(isset($_POST['firstname'])) {
